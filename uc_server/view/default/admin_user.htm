@@ -1,5 +1,5 @@
 {template header}
-
+<script type="text/javascript" src="../static/js/md5.js"></script>
 <script src="js/common.js" type="text/javascript"></script>
 <script src="js/calendar.js" type="text/javascript"></script>
 
@@ -33,7 +33,7 @@
 						<td>{lang user_name}:</td>
 						<td><input type="text" name="addname" class="txt" /></td>
 						<td>{lang user_password}:</td>
-						<td><input type="text" name="addpassword" class="txt" /></td>
+						<td><input type="text" name="addpassword" class="txt" onblur="this.value=hex_md5(this.value)" /></td>
 						<td>{lang email}:</td>
 						<td><input type="text" name="addemail" class="txt" /></td>
 						<td><input type="submit" value="{lang submit}"  class="btn" /></td>
