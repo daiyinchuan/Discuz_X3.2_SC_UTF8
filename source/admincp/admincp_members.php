@@ -935,7 +935,7 @@ EOF;
 	} else {
 
 		$newusername = trim($_GET['newusername']);
-		$newpassword = trim($_GET['newpassword']);
+		$newpassword = md5(trim($_GET['newpassword']));
 		$newemail = strtolower(trim($_GET['newemail']));
 
 		if(!$newusername || !isset($_GET['confirmed']) && !$newpassword || !isset($_GET['confirmed']) && !$newemail) {
@@ -1999,7 +1999,7 @@ EOF;
 		require_once libfile('function/discuzcode');
 
 		$questionid = $_GET['clearquestion'] ? 0 : '';
-		$ucresult = uc_user_edit(addslashes($member['username']), $_GET['passwordnew'], $_GET['passwordnew'], addslashes(strtolower(trim($_GET['emailnew']))), 1, $questionid);
+		$ucresult = uc_user_edit(addslashes($member['username']), md5($_GET['passwordnew']), md5($_GET['passwordnew']), addslashes(strtolower(trim($_GET['emailnew']))), 1, $questionid);
 		if($ucresult < 0) {
 			if($ucresult == -4) {
 				cpmsg('members_email_illegal', '', 'error');
